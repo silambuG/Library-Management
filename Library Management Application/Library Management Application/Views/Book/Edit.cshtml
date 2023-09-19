@@ -1,0 +1,52 @@
+﻿@model Books
+@{
+    ViewBag.Title = "Edit Book";
+    Layout = "_Layout";
+}
+<style>
+.btn{
+    width:5rem
+}
+</style>
+<form class="form-control p-5" asp-controller="Book" asp-action="Edit" method="post">
+    <div class="text-start mb-2"><h3>Edit Book</h3></div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" asp-for="BookId" disabled>
+      <input type="text" class="form-control" asp-for="BookId" hidden>
+      <label asp-for="BookId">Book Id</label>
+    </div>
+    <div class="form-floating mb-3">
+      <select class="form-select" asp-for="BookcategoryId" asp-items="Html.GetEnumSelectList<Books.Dept>()" aria-label="Floating label select example">
+      </select>
+      <label asp-for="BookcategoryId">Categories</label>
+      <span asp-validation-for="BookcategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" asp-for="BookName">
+      <label asp-for="BookName">Book</label>
+      <span asp-validation-for="BookName" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" asp-for="AuthorName">
+      <label asp-for="AuthorName">Author</label>
+      <span asp-validation-for="AuthorName" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" asp-for="PublishYear">
+      <label asp-for="PublishYear">Published</label>
+      <span asp-validation-for="PublishYear" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" asp-for="Price">
+      <label asp-for="Price">Price</label>
+      <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <button class="btn btn-primary mx-1">save</button>
+    <a type="reset" asp-controller="Book" asp-action="index" class="btn btn-warning mx-1">Cancel</a>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

@@ -1,0 +1,74 @@
+﻿@model Library_Management_Application.Models.Books
+@{
+    ViewBag.Title = "Edit Book";
+    Layout = "_Layout";
+}
+<style>
+    .btn {
+        width: 5rem
+    }
+</style>
+
+@if (Model == null)
+{
+    <div class="alert alert-warning p-5">
+        Book Does'nt Exist'
+    </div>
+}
+else
+{
+    <div class="container w-50">
+        <table class="table table-striped">
+            <h3 class="text-primary mb-3">@Model.BookName Book Details</h3>
+            <tbody>
+
+                <tr>
+                    <th scope="col">Book Id</th>
+                    <td>@Model.BookId</td>
+                </tr>
+                <tr>
+                    <th scope="col">Book Category</th>
+                    <td>@Model.BookcategoryId</td>
+                </tr>
+                <tr>
+                    <th scope="col">Book Name</th>
+                    <td>@Model.BookName</td>
+                </tr>
+                <tr>
+                    <th scope="col">Author Name</th>
+                    <td>@Model.AuthorName</td>
+                </tr>
+                <tr>
+                    <th scope="col">Book Id</th>
+                    <td>@Model.PublishYear</td>
+                </tr>
+                <tr>
+                    <th scope="col">Updated Date</th>
+                    <td>@Model.UpdatedOn.ToString("MMM d yyyy")</td>
+                </tr>
+                <tr>
+                    <th scope="col">Price</th>
+                    <td>@Model.Price</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a class="btn btn-primary mx-2 w-auto" asp-controller="Book" asp-action="index">
+                <i class="fa-solid fa-home"></i>
+                Home
+            </a>
+            <a class="btn btn-warning mx-2 w-auto" asp-controller="Book" asp-action="Edit" asp-route-id="@Model.BookId">
+                <i class="fa-solid fa-pen px-1"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger mx-2 w-auto" asp-controller="Book" asp-action="Delete" asp-route-id="@Model.BookId" onclick="return confirm('Are you sure do you want delete')">
+                <i class="fa-solid fa-trash-can px-1"></i>
+                Delete
+            </a>
+        </div>
+    </div>
+}
+@section scripts{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha512-yFjZbTYRCJodnuyGlsKamNE/LlEaEAxSUDe5+u61mV8zzqJVFOH7TnULE2/PP/l5vKWpUNnF4VGVkXh3MjgLsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
